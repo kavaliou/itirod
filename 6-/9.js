@@ -78,12 +78,12 @@ document.querySelector('.tasks').addEventListener('click', function () {
 
     var PerformTask = function(name, description, dateStart, dateEnd){
 		Task.call(this, name, description, dateStart, dateEnd);
-		this.progress = 0;
+		this.progress = -1;
 		this.completed = false;
 	};
 
-	PerformTask.prototype = Object.create(Task.prototype);
-	PerformTask.prototype.constructor = PerformTask;
+	// PerformTask.prototype = Object.create(Task.prototype);
+	// PerformTask.prototype.constructor = PerformTask;
 
     PerformTask.prototype.isCompleted = function(){
         return this.completed;

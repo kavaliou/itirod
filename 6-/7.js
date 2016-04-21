@@ -25,7 +25,7 @@ document.querySelector('.rect').addEventListener('click', function () {
         if (isNaN(input)){
             throw new Error('Invalid input!');
         }
-        return parseInt(input);
+        return parseFloat(input);
     }
 
     var data = [0, 0, 0, 0, 0, 0, 0, 0];
@@ -44,23 +44,36 @@ document.querySelector('.rect').addEventListener('click', function () {
     var x = _prompt('Enter x');
     var y = _prompt('Enter y');
 
-    // TODO: second task's point.
-
-    var poly = [];
+    var poly1 = [];
     for (var i = 0; i < 4; i++){
-        poly.push({x: data[2*i], y: data[2*i+1]})
+        poly1.push({x: data[2*i], y: data[2*i+1]});
     }
     var point = {x: x, y: y};
 
-    function isPointInPoly(poly, pt){
-        for(var c = false, i = -1, l = poly.length, j = l - 1; ++i < l; j = i)
-            ((poly[i].y <= pt.y && pt.y < poly[j].y) || (poly[j].y <= pt.y && pt.y < poly[i].y))
-            && (pt.x < (poly[j].x - poly[i].x) * (pt.y - poly[i].y) / (poly[j].y - poly[i].y) + poly[i].x)
-            && (c = !c);
-        return c;
+    function polygonArea(points, numPoints) {
+        var area = 0;         // Accumulates area in the loop
+        var j = numPoints-1;  // The last vertex is the 'previous' one to the first
+        for (var i=0; i < numPoints; i++) { area = area +  (points[j].x + points[i].x) * (points[j].y - points[i].y);
+            j = i;  //j is previous vertex to i
+        }
+        return area/2;
     }
 
-    alert(isPointInPoly(poly, point));
+    var flag = true;
+    var area = polygonArea(poly1, 4);
+
+    for (var i = 0; i < 4; i++) {
+        var poly2 = [];
+        for (var j = 0; j < 4; j++) {
+            poly2.push({x: data[2 * j], y: data[2 * j + 1]});
+            if (i == j)
+                poly2.push(point);
+        }
+        if (area < polygonArea(poly2, 5))
+            flag = false;
+    }
+
+    alert(flag);
 
 });
 
@@ -90,8 +103,8 @@ document.querySelector('.decorator').addEventListener('click', function () {
 
     sqr = decorator_1(sqr);
 
-    alert(sqr(2));
-    //alert(sqr('2'));
+    // alert(sqr(2));
+    alert(sqr('2'));
 
     //===========================================
 

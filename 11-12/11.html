@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>11</title>
+</head>
+<body>
+    <div>
+        <input type="button" onclick="clickme()" value="Click me">
+        <input type="button" onclick="clickmetoo()" value="Click me too">
+        <div id="div">
+        </div>
+    </div>
+
+    <script>
+        var num = 0;
+        var colors = ['red', 'green', 'blue'];
+        var curColor = 0;
+
+        var clickme = function () {
+            var str = 'h' + ((num % 6) + 1);
+            var child = document.createElement(str);
+            child.textContent = str;
+            child.style.color = colors[curColor % 3];
+            document.getElementById('div').appendChild(child);
+            num += 1;
+        };
+
+        var clickmetoo = function () {
+            var children = document.getElementById('div').childNodes;
+            curColor += 1;
+            for (var child in children){
+                if (child > 0 )
+                    children[child].style.color = colors[curColor % 3];
+            }
+        };
+    </script>
+
+</body>
+</html>

@@ -1,15 +1,12 @@
 document.querySelector('.compare').addEventListener('click', function () {
     function is_number(value){
         value = parseInt(value);
-        return !isNaN(value) && isFinite(value);
+        return !isNaN(value);
     }
 
-    var first = 0;
-    var second = 0;
-
     while(true){
-        first = prompt('Enter first number');
-        second = prompt('Enter second number');
+        var first = prompt('Enter first number');
+        var second = prompt('Enter second number');
 
         if (is_number(first) && is_number(second)){
             if(first>second){

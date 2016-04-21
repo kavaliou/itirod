@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>12</title>
+    <script src="jquery-1.12.3.js"></script>
+</head>
+<body>
+
+    <div>
+        <input type="button" id="button" value="Click me">
+        <div id="div">
+        </div>
+    </div>
+
+    <script>
+        var num = 0;
+        $('#button').click(function () {
+            var str = 'h' + ((num % 6) + 1);
+            $('#div').append('<' + str + '>' + str + '</' + str + '>');
+            var elem = $('#div').last();
+            $.get("https://api.jquery.com/jquery.get/", function (res, status) {
+                elem.append(" " + status);
+            });
+            num += 1;
+        })
+    </script>
+
+</body>
+</html>
