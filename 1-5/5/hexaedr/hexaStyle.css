@@ -1,0 +1,49 @@
+BODY{
+    perspective: 500px;
+    perspective-origin: center -50px;
+}
+.container{
+    margin: 3em auto 0;
+    transform-style: preserve-3d;
+    width: 50px;
+    height: 50px;
+    animation: rotate 10s infinite linear;
+}
+.container:hover{
+    animation-play-state: paused;
+}
+@keyframes rotate {
+    100%{
+        transform: rotateY(360deg) rotateZ(360deg) rotateX(360deg);
+    }
+}
+.side{
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    opacity: 0.7;
+}
+.first{
+    background: green;
+    transform: translateZ(-25px);
+}
+.second{
+    background: white;
+    transform: translateY(25px) rotateX(90deg);
+}
+.third{
+    background: blue;
+    transform: translateY(-25px) rotateX(90deg);
+}
+.fourth{
+    background: yellow;
+    transform: translateX(25px) rotateY(90deg);
+}
+.fiveth{
+    background: red;
+    transform: translateX(-25px) rotateY(90deg);
+}
+.sixth{
+    background: orange;
+    transform: translateZ(25px);
+}

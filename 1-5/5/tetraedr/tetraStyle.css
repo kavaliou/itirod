@@ -1,0 +1,46 @@
+BODY{
+    perspective: 1000px;
+}
+.container{
+    margin: 3em auto 0;
+    transform-style: preserve-3d;
+    animation: rot 4s infinite linear;
+    height: 86px;
+    width: 100px;
+}
+.container:hover{
+    animation-play-state: paused;
+}
+
+.side{
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 86px solid;
+    transform-origin: bottom;
+    opacity:.7;
+}
+
+.first{
+border-bottom-color: green;
+}
+.second{
+transform: rotateX(70.5deg);
+border-bottom-color: red;
+}
+.third{
+transform: rotateZ(-120deg) translateY(43px) translateX(25px) rotateX(70.5deg);
+border-bottom-color: blue;
+}
+.fourth{
+transform: rotateZ(120deg) translateY(43px) translateX(-25px) rotateX(70.5deg);
+border-bottom-color: yellow;
+}
+
+@keyframes rot {
+    95%{
+        transform: rotateY(360deg) rotateX(360deg) rotateZ(360deg);
+    }
+}

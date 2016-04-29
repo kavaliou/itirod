@@ -17,12 +17,22 @@
         var num = 0;
         $('#button').click(function () {
             var str = 'h' + ((num % 6) + 1);
-            $('#div').append('<' + str + '>' + str + '</' + str + '>');
-            var elem = $('#div').last();
-            $.get("https://api.jquery.com/jquery.get/", function (res, status) {
-                elem.append(" " + status);
+            $('#div').append('<div><' + str + '>' + str + '</' + str + '></div>');
+            let elem = $('#div ' + str).last();
+            $.ajax({
+                url: 'http://localhost:8000/api/users/doctors/?location=00544&procedure=3&scheduled_for=2016-04-25T14:00:00Z&gender=male',
+                type: 'get',
+                success: function(res){
+                    elem.append(" " + res.count);
+                }
             });
             num += 1;
+            $('#div div').each(function(i, elem){
+                if (i % 2 == 0) {
+                    elem.style.color = i % 2 == 0 ? "red" :;
+                } else
+                    elem.style.color = "blue";
+            });
         })
     </script>
 

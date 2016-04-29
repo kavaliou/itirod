@@ -1,7 +1,36 @@
+img, video{
+    width: 400px;
+    height: 200px;
+}
 
+div {
+    margin: 10px;
+    padding: 10px;
+    border: red 1px solid;
+    width:auto;
+}
+
+div div:hover {
+    background-color: #ffcc33;
+}
+
+div:nth-child(odd) div.class {
+    text-align: left;
+}
+
+div:nth-child(even) div.class {
+    text-align: right;
+}
+
+input {
+    border-color: #ffff91;
+    box-shadow: 5px 5px 5px #d1ffa7;
+    border-radius: 10px;
+    outline: none;
+    padding: 5px;
+}
 
 code {
     color: darkslategrey;
     background-color: aliceblue;
 }
-

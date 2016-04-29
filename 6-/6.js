@@ -72,9 +72,7 @@ document.querySelector('.fib').addEventListener('click', function () {
     var b = 1;
 
     while (num > 0){
-        var z = b;
-        b = a + b;
-        a = z;
+        [a, b] = [b, a + b];  // ES6
         num--;
     }
 

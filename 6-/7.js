@@ -103,24 +103,24 @@ document.querySelector('.decorator').addEventListener('click', function () {
 
     sqr = decorator_1(sqr);
 
-    // alert(sqr(2));
-    alert(sqr('2'));
+    alert(sqr(2));
+    // alert(sqr('2'));
 
     //===========================================
 
     function decorator_2(func, type){
-        function f(args){
+        function f(...args){
             for(var i = 0; i < args.length; i++) {
                 if (typeof(args[i]) !== type) {
                     throw new Error('arg must be ' + type);
                 }
             }
-            return func(args);
+            return func(...args);
         }
         return f;
     }
 
-    function sum(args){
+    function sum(...args){
         var result = 0;
         for(var i = 0; i < args.length; i++) {
             result += args[i];
@@ -130,7 +130,7 @@ document.querySelector('.decorator').addEventListener('click', function () {
 
     sum = decorator_2(sum, "number");
 
-    alert(sum([1, 2, 3, 4]));
-    //alert(sum([1, 2, 3, '4']));
+    // alert(sum(1, 2, 3, 4));
+    alert(sum(1, 2, 3, '4'));
 
 });

@@ -6,7 +6,7 @@
 </head>
 <body>
     <div>
-        <input type="button" onclick="clickme()" value="Click me">
+        <input type="button" onclick="clickme()" id="clickme">
         <input type="button" onclick="clickmetoo()" value="Click me too">
         <div id="div">
         </div>
@@ -16,12 +16,16 @@
         var num = 0;
         var colors = ['red', 'green', 'blue'];
         var curColor = 0;
+        document.getElementById('clickme').value = 'click me';
 
         var clickme = function () {
             var str = 'h' + ((num % 6) + 1);
             var child = document.createElement(str);
             child.textContent = str;
             child.style.color = colors[curColor % 3];
+            child.addEventListener('click', function (elem) {
+                elem.target.parentNode.removeChild(elem.target);
+            });
             document.getElementById('div').appendChild(child);
             num += 1;
         };
@@ -30,7 +34,7 @@
             var children = document.getElementById('div').childNodes;
             curColor += 1;
             for (var child in children){
-                if (child > 0 )
+                if (child > 0)
                     children[child].style.color = colors[curColor % 3];
             }
         };
